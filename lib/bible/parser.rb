@@ -681,16 +681,16 @@ module Bible
     # Returns the upcoming book, if any. If modify is true, the string passed in has the book referenced removed
     def self.get_book(scanner, modify = false)
       # Look for numbered book references (a digit, followed by whitespace, following by some number of word characters.)
-      if t = scanner.check(/\d\s+[A-Za-z]+(\.|)/)
+      if t = scanner.check(/\d\s+[A-Za-zԱ-ֆա-ֆ]+(\.|)/)
         if modify
-          return scanner.scan(/\d\s+[A-Za-z]+(\.|)/).gsub(/\./, "")
+          return scanner.scan(/\d\s+[A-Za-zԱ-ֆա-ֆ]+(\.|)/).gsub(/\./, "")
         else
           return t
         end
       # Look for one of the 'normal' books
-      elsif t = scanner.check(/[A-Za-z]+(\.|)/)
+      elsif t = scanner.check(/[A-Za-zԱ-ֆա-ֆ]+(\.|)/)
         if modify
-          return scanner.scan(/[A-Za-z]+(\.|)/).gsub(/\./, "")
+          return scanner.scan(/[A-Za-zԱ-ֆա-ֆ]+(\.|)/).gsub(/\./, "")
         else
           return t
         end
